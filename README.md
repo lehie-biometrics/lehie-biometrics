@@ -1,7 +1,7 @@
 <div align="center">
 
   <h1>
-    Lehies Biometrics <img src="./logo.png" width="28" height="28" align="absmiddle" alt="Badge Lehies Biometrics" />
+    Lehie Biometrics <img src="./logo.png" width="28" height="28" align="absmiddle" alt="Badge Lehies Biometrics" />
   </h1>
 
   <p>
@@ -22,7 +22,7 @@
 
 ### Vue d'ensemble
 
-**Lehies Biometrics** <img src="./logo.png" width="18" height="18" align="absmiddle" /> est un studio indépendant de biostatistique et de programmation clinique. Nous accompagnons les laboratoires pharmaceutiques, les biotechs et les CRO dans la structuration, la validation et l'analyse de leurs données d'essais cliniques (Phases I à IV), avec une exigence stricte de conformité réglementaire (**FDA / EMA / PMDA**).
+**Lehie Biometrics** <img src="./logo.png" width="18" height="18" align="absmiddle" /> est un studio indépendant de biostatistique et de programmation clinique. Nous accompagnons les laboratoires pharmaceutiques, les biotechs et les CRO dans la structuration, la validation et l'analyse de leurs données d'essais cliniques (Phases I à IV), avec une exigence stricte de conformité réglementaire (**FDA / EMA / PMDA**).
 
 ---
 
@@ -37,7 +37,7 @@
 
 ---
 
-### Standards de Qualité **Lehies Biometrics** <img src="./logo.png" width="18" height="18" align="absmiddle" />
+### Standards de Qualité **Lehie Biometrics** <img src="./logo.png" width="18" height="18" align="absmiddle" />
 
 * **Conformité Réglementaire Native :** Tous les jeux de données générés par **Lehies Biometrics** <img src="./logo.png" width="16" height="16" align="absmiddle" /> sont conçus pour passer les contrôles de validation **Pinnacle 21** sans erreur critique.
 * **Reproductibilité & Architecture Modulaire :** Séparation stricte entre données brutes (`raw`), standardisation (`sdtm`), analyse (`adam`), macros utilitaires (`macros`) et sorties (`tlf`).
@@ -49,5 +49,5 @@
 
 Pour toute demande d'intervention, de sous-traitance biométrique ou d'audit de pipeline clinique :
 
-* **Structure :** **Lehies Biometrics** <img src="./logo.png" width="16" height="16" align="absmiddle" />
+* **Structure :** **Lehie Biometrics** <img src="./logo.png" width="16" height="16" align="absmiddle" />
 * **Contact direct :** [lehie@gmx.fr](mailto:lehie@gmx.fr)
