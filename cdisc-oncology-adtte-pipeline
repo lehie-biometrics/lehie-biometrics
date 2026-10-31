@@ -1,0 +1,56 @@
+<div align="center">
+
+  <h2>
+    CDISC ADaM (ADTTE) & Kaplan-Meier Regulatory Pipeline <img src="https://raw.githubusercontent.com/lehie-biometrics/lehie-biometrics/main/logo.png" width="24" height="24" align="absmiddle" />
+  </h2>
+  <p><b>Cross-Language Production (SAS 9.4) & Independent Validation (R Pharmaverse)</b></p>
+
+  <p>
+    <img src="https://img.shields.io/badge/Standard-CDISC_ADaM_IG_v1.3-0B3C5D?style=flat-square" />
+    <img src="https://img.shields.io/badge/Therapeutic_Area-Oncology_(RECIST_1.1)-8B0000?style=flat-square" />
+    <img src="https://img.shields.io/badge/Production-SAS_9.4-0B3C5D?style=flat-square" />
+    <img src="https://img.shields.io/badge/Independent_QC-R_{admiral}_%7C_{diffdf}-00A896?style=flat-square" />
+    <img src="https://img.shields.io/badge/Pinnacle_21-0_Errors_%7C_0_Warnings-2E8B57?style=flat-square" />
+  </p>
+
+</div>
+
+---
+
+### 1. Clinical & Statistical Context
+
+This repository demonstrates an end-to-end, submission-ready **CDISC Basic Data Structure (BDS) Time-to-Event (`ADTTE`)** pipeline and **Primary Efficacy Analysis (Progression-Free Survival - PFS)** developed by **Lehie Biometrics**.
+
+* **Endpoint:** Progression-Free Survival (`PARAMCD = "PFS"`) per RECIST v1.1 criteria.
+* **Event Definition ($CNSR = 0$):** Earliest of documented radiological disease progression (`SDTM.RS`) or death from any cause (`SDTM.DM` / `ADSL.DTHDT`).
+* **FDA Censoring Rules Applied ($CNSR \in \{1, 2, 3\}$):**
+  * **Rule 1 ($CNSR = 1$):** Ongoing without event at clinical cut-off $\rightarrow$ censored at last adequate tumor assessment (`LASTTUDT`).
+  * **Rule 2 ($CNSR = 2$):** No baseline or post-baseline tumor assessment $\rightarrow$ censored at randomization date (`RANDDT`, $AVAL = 1\text{ day}$).
+  * **Rule 3 ($CNSR = 3$):** Initiation of new anti-cancer therapy (`NACTDT`) prior to documented progression $\rightarrow$ censored at last adequate tumor assessment prior to `NACTDT`.
+
+---
+
+### 2. Statistical Methodology
+
+For time-to-event analysis in days converted to months ($AVAL = \frac{ADT - STARTDT + 1}{30.4375}$):
+
+* **Non-parametric Estimation:** Kaplan-Meier product-limit estimator $\hat{S}(t) = \prod_{t_i \le t} \left(1 - \frac{d_i}{n_i}\right)$ with **Brookmeyer-Crowley** $95\%$ confidence intervals (log-log transformation).
+* **Hypothesis Testing:** Stratified **Log-Rank Test** adjusting for randomization stratification factors (`STRAT1`: ECOG $0\text{ vs }1$, `STRAT2`: Prior lines of therapy).
+* **Effect Size:** Stratified **Cox Proportional Hazards Model** $\lambda(t \mid X) = \lambda_0(t)\exp(\beta \cdot \text{TRT01PN})$ with **Efron tie-handling** to estimate the Hazard Ratio ($HR$) and $95\%$ Wald CI.
+
+---
+
+### 3. Repository Architecture
+
+```text
+cdisc-oncology-adtte-pipeline/
+├── programs/
+│   ├── 01_sas_prod/
+│   │   ├── adtte_prod.sas          # Production derivation of ADaM.ADTTE (SAS 9.4)
+│   │   └── f_14_2_01_km_pfs.sas    # Stratified Cox PH, Log-Rank & KM Plot (PROC LIFETEST / PHREG)
+│   └── 02_r_qc/
+│       ├── v_adtte_qc.R            # Independent QC via {admiral} & {diffdf} reconciliation
+│       └── v_t_14_2_01_pfs.R       # Independent QC of Survival Table via {tern} & {rtables}
+├── specs/
+│   └── adtte_censoring_matrix.md   # Traceability & FDA censoring hierarchy specification
+└── README.md
