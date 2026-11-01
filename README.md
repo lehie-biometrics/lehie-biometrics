@@ -1,17 +1,18 @@
 <div align="center">
 
-  <!-- BANNIÈRE ANIMÉE DYNAMIQUE AUX COULEURS DU LOGO -->
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0B3C5D,100:00A896&height=220&section=header&text=LEHIE%20BIOMETRICS&fontSize=52&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=Clinical%20Statistical%20Programming%20%26%20Biostatistical%20Consulting&descAlignY=58&descSize=18" width="100%" alt="Lehie Biometrics Banner" />
-
   <br/>
 
+  <!-- EMBLÈME CENTRAL HAUTE DÉFINITION -->
+  <img src="https://raw.githubusercontent.com/lehie-biometrics/lehie-biometrics/main/logo.png" width="115" height="115" alt="Lehie Biometrics Emblem" />
+
   <!-- TITRE AVEC BADGE CARRÉ STYLE TWITTER/X -->
-  <h2>
+  <h1>
     Lehie Biometrics <img src="https://raw.githubusercontent.com/lehie-biometrics/lehie-biometrics/main/logo.png" width="28" height="28" align="absmiddle" alt="Verified Badge" />
-  </h2>
+  </h1>
 
   <p>
-    <i><b>"Transforming complex clinical trial data into regulatory-grade evidence."</b></i><br/>
+    <b>CLINICAL STATISTICAL PROGRAMMING & BIOSTATISTICAL CONSULTING</b><br/>
+    <i>"Transforming complex clinical trial data into regulatory-grade evidence."</i><br/>
     <sub><b>FDA • EMA • PMDA Submission Standards | CDISC SDTM & ADaM | Phase I–IV</b></sub>
   </p>
 
@@ -41,7 +42,6 @@
 
 <br/>
 
-<!-- CARTES VISUELLES CÔTE À CÔTE (HTML TABLE) -->
 <table width="100%">
   <tr>
     <td width="50%" valign="top">
@@ -77,17 +77,17 @@
 
 ### 🔄 Architecture de Notre Pipeline Réglementaire
 
-GitHub génère automatiquement ce diagramme interactif illustrant le flux de validation **Lehie Biometrics** <img src="https://raw.githubusercontent.com/lehie-biometrics/lehie-biometrics/main/logo.png" width="16" height="16" align="absmiddle" /> :
+Flux de validation **Lehie Biometrics** <img src="https://raw.githubusercontent.com/lehie-biometrics/lehie-biometrics/main/logo.png" width="16" height="16" align="absmiddle" /> de la base clinique brute jusqu'à la soumission FDA / EMA :
 
 ```mermaid
 graph LR
-    A[(EDC / Raw Data)] -->|Mapping & Specs| B(SDTM Domains<br/>DM, AE, RS, LB)
-    B -->|SAS 9.4 Production| C[ADaM Prod<br/>ADSL, ADTTE, ADAE]
-    B -->|R Pharmaverse {admiral}| D[ADaM Independent QC<br/>Level 1 Validation]
-    C --> E{Automated Audit<br/>PROC COMPARE / diffdf}
+    A[("EDC / Raw Data")] -->|"Mapping & Specs"| B("SDTM Domains<br/>DM, AE, RS, LB")
+    B -->|"SAS 9.4 Production"| C["ADaM Prod<br/>ADSL, ADTTE, ADAE"]
+    B -->|"R Pharmaverse (admiral)"| D["ADaM Independent QC<br/>Level 1 Validation"]
+    C --> E{"Automated Audit<br/>PROC COMPARE / diffdf"}
     D --> E
-    E -->|100% Equivalence| F[ICH E3 TLFs & CSR<br/>PROC REPORT / {rtables}]
-    E -->|Pinnacle 21 Check| G([FDA / EMA eCTD Submission])
+    E -->|"100% Equivalence"| F["ICH E3 TLFs & CSR<br/>PROC REPORT / rtables"]
+    E -->|"Pinnacle 21 Check"| G(["FDA / EMA eCTD Submission"])
 
     style A fill:#1B263B,stroke:#00A896,stroke-width:2px,color:#fff
     style B fill:#0B3C5D,stroke:#00A896,stroke-width:2px,color:#fff
